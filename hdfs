@@ -1,4 +1,7 @@
 hadoop fs <args>
 
 hadoop fs -ls .
+hadoop fs -ls /home/arek
+
+hadoop fs -cp file:///home/arek/file.txt hdfs:///bivm:9000/user/biadmin/test.txt
 
