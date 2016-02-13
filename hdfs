@@ -1,1 +1,4 @@
-.
+hadoop fs <args>
+
+hadoop fs -ls .
+
