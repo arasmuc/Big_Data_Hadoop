@@ -1,6 +1,7 @@
 # install hadoop on CentOS/RHEL and Fedora 
 # http://tecadmin.net/setup-hadoop-2-4-single-node-cluster-on-linux/#
 # https://skroot.wordpress.com/2014/12/28/instalacja-hadoop-hdfs-i-yarn-na-pojedynczej-maszynie/
+# CHECK /etc/hosts and firewall
 
 1. install JAVA :
 java -version 
