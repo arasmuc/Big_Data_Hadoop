@@ -1,0 +1,49 @@
+# install hadoop on CentOS/RHEL and Fedora 
+# http://tecadmin.net/setup-hadoop-2-4-single-node-cluster-on-linux/#
+
+1. install JAVA :
+java -version 
+
+cd /opt/
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u72-b15/jdk-8u72-linux-x64.tar.gz"
+tar xzf jdk-8u72-linux-x64.tar.gz
+cd /opt/jdk1.8.0_72
+alternatives --install /usr/bin/java java /opt/jdk1.8.0_72/bin/java 2
+alternatives --config java
+
+# setup javac and jar commands path using alternatives
+
+alternatives --install /usr/bin/jar jar /opt/jdk1.8.0_72/bin/jar 2
+alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_72/bin/javac 2
+alternatives --set jar /opt/jdk1.8.0_72/bin/jar
+alternatives --set javac /opt/jdk1.8.0_72/bin/javac
+
+export JAVA_HOME=/opt/jdk1.8.0_72
+export JRE_HOME=/opt/jdk1.8.0_72/jre
+export PATH=$PATH:/opt/jdk1.8.0_72/bin:/opt/jdk1.8.0_72/jre/bin
+
+vi /etc/environment
+
+2. Creating HADOOP user
+
+adduser hadoop
+passwd hadoop
+
+su - hadoop
+ssh-keygen -t rsa
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 0600 ~/.ssh/authorized_keys
+
+3. Install Hadoop 2.6.0 
+
+su - hadoop
+wget http://apache.claz.org/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz
+tar xzf hadoop-2.6.0.tar.gz
+mv hadoop-2.6.0 hadoop
+
+vi ~/.bashrc
+
+
+
+
+
