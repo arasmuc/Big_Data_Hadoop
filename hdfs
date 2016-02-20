@@ -1,5 +1,27 @@
 hadoop fs <args>
 
+
+HDFS and MapRFS commands•  
+hadoop fs –mkdir mydir – is used to make a new directory• 
+hadoop fs –copyFromLocal /etc/ho sts mydir – will copy a file from your local file system into the mapr-FS• 
+hadoop fs –lsr mydir – will recursiv ely list the directory contents•
+hadoop fs –cat mydir/hosts – will display the contents of a file•
+hadoop fs –rm mydir/h – will remove the specified fileMapR FS Specific Commands•
+hadoop mfs –ln mydir yourdir – will create a link between two directories•
+hadoop mfs –setcompression off mydir – will turn off compression for the files of a di rectory• 
+hadoop mfs –setchunksize 65536 mydir – sets the chunk size for the files of a directoryStandard POSIX comm ands that work in MapR-FS• 
+mkdir to make a directory•
+cp to copy a file• 
+ls to list the contents of a direc tory•  
+ln to create a link between two directories• 
+rm to remove a file• 
+tail – for copying a selected part of a file• 
+grep and awk – for searching inpute for patterns• 
+sed – edit streaming files
+
+
+
+
 hadoop fs -ls .
 hadoop fs -ls /home/arek
 
