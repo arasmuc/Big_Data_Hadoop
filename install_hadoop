@@ -27,7 +27,7 @@ export JAVA_HOME=/opt/jdk1.8.0_72
 export JRE_HOME=/opt/jdk1.8.0_72/jre
 export PATH=$PATH:/opt/jdk1.8.0_72/bin:/opt/jdk1.8.0_72/jre/bin
 
-vi /etc/environment
+
 
 2. Creating HADOOP user
 
