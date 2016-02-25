@@ -2,7 +2,8 @@
 # http://tecadmin.net/setup-hadoop-2-4-single-node-cluster-on-linux/#
 # https://skroot.wordpress.com/2014/12/28/instalacja-hadoop-hdfs-i-yarn-na-pojedynczej-maszynie/
 # CHECK /etc/hosts and firewall
-#  ON MULTI-NODE  http://tecadmin.net/set-up-hadoop-multi-node-cluster-on-centos-redhat/#
+#  ON MULTI-NODE  http://tecadmin.net/set-up-hadoop-multi-node-cluster-on-centos-redhat/
+#   http://examples.javacodegeeks.com/enterprise-java/apache-hadoop/apache-hadoop-cluster-setup-example-virtual-machines/?utm_content=buffer2457b&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
 
 
 1. install JAVA :
