@@ -75,24 +75,26 @@ vi core-site.xml
 </property>
 </configuration>
 ----------------------------------------------------------------------------------------
+mkdir -p /home/hadoop/hadoop/hdfs/namenode
+mkdir -p /home/hadoop/hadoop/hdfs/datanode
+
 vi hdfs-site.xml
 
 <configuration>
-<property>
- <name>dfs.replication</name>
- <value>1</value>
-</property>
-
-<property>
-  <name>dfs.name.dir</name>
-    <value>file:///home/hadoop/hadoopdata/hdfs/namenode</value>
-</property>
-
-<property>
-  <name>dfs.data.dir</name>
-    <value>file:///home/hadoop/hadoopdata/hdfs/datanode</value>
-</property>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+        <property>
+      <name>dfs.namenode.name.dir</name>
+      <value>/home/hadoop/hadoop/hdfs/namenode</value>
+   </property>
+   <property>
+      <name>dfs.datanode.data.dir</name>
+      <value>/home/hadoop/hadoop/hdfs/datanode</value>
+   </property>
 </configuration>
+
 
 ----------------------------------------------------------------------------------------
 
