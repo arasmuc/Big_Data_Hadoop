@@ -152,6 +152,10 @@ hadoop2
 hadoop3
 
 -----------------------------------------------------------------------------------------
+[hadoop@hadoop1 ~]$ scp -rp hadoop hadoop2:/home/hadoop
+
+[hadoop@hadoop1 ~]$ scp -rp hadoop hadoop3:/home/hadoop
+-----------------------------------------------------------------------------------------
 
 5. Format Namenode
 
