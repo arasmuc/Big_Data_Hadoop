@@ -107,11 +107,11 @@ vi hdfs-site.xml
         <value>1</value>
     </property>
     <property>
-        <name>dfs.name.dir</name>
+        <name>dfs.namenode.name.dir</name>
         <value>file:///home/hadoop/data/hadoop-data/nn</value>
     </property>
     <property>
-        <name>dfs.data.dir</name>
+        <name>dfs.datanode.data.dir</name>
         <value>file:///home/hadoop/data/hadoop-data/dn</value>
     </property>
     <property>
@@ -119,6 +119,7 @@ vi hdfs-site.xml
         <value>file:///home/hadoop/data/hadoop-data/snn</value>
     </property>
 </configuration>
+
 
 
 ----------------------------------------------------------------------------------------
@@ -173,7 +174,7 @@ hdfs namenode -format
 -----------------------------------------------------------------------------------------
 
 
-6. Startup Hagoop
+6. Startup Hadoop
 
 cd $HADOOP_HOME/sbin/
 start-dfs.sh
