@@ -6,7 +6,7 @@
 #   http://examples.javacodegeeks.com/enterprise-java/apache-hadoop/apache-hadoop-cluster-setup-example-virtual-machines/?utm_content=buffer2457b&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
 
 
-1. install JAVA :
+1. install JAVA on hadoop1, hadoop1, hadoop3 :
 java -version 
 
 cd /opt/
@@ -29,7 +29,7 @@ export PATH=$PATH:/opt/jdk1.8.0_72/bin:/opt/jdk1.8.0_72/jre/bin
 
 
 
-2. Creating HADOOP user
+2. Creating HADOOP user on hadoop1, hadoop1, hadoop3
 
 adduser hadoop
 passwd hadoop
@@ -46,7 +46,7 @@ wget http://apache.claz.org/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz
 tar xzf hadoop-2.6.0.tar.gz
 mv hadoop-2.6.0 hadoop
 
-vi ~/.bashrc
+vi ~/.bashrc  on hadoop1, hadoop1, hadoop3
 
 export HADOOP_HOME=/home/hadoop/hadoop
 export HADOOP_INSTALL=$HADOOP_HOME
@@ -64,6 +64,18 @@ export JAVA_HOME=/opt/jdk1.8.0_72
 cd $HADOOP_HOME/etc/hadoop
 vi hadoop-env.sh   --->  set JAVA_HOME as on your system
 
+
+5. Create Hadoop directorys on hadoop1, hadoop1, hadoop3
+
+[hadoop@hadoop1 ~]$ pwd
+/home/hadoop
+mkdir -p /home/hadoop/data/hadoop-data/nn
+mkdir -p /home/hadoop/data/hadoop-data/snn
+mkdir -p /home/hadoop/data/hadoop-data/dn
+mkdir -p /home/hadoop/data/hadoop-data/mapred/system 
+mkdir -p /home/hadoop/data/hadoop-data/mapred/local
+ 
+
 cd $HADOOP_HOME/etc/hadoop
 
 vi core-site.xml 
@@ -75,8 +87,7 @@ vi core-site.xml
 </property>
 </configuration>
 ----------------------------------------------------------------------------------------
-mkdir -p /home/hadoop/hadoop/hdfs/namenode
-mkdir -p /home/hadoop/hadoop/hdfs/datanode
+
 
 vi hdfs-site.xml
 
@@ -85,14 +96,18 @@ vi hdfs-site.xml
         <name>dfs.replication</name>
         <value>1</value>
     </property>
-        <property>
-      <name>dfs.namenode.name.dir</name>
-      <value>/home/hadoop/hadoop/hdfs/namenode</value>
-   </property>
-   <property>
-      <name>dfs.datanode.data.dir</name>
-      <value>/home/hadoop/hadoop/hdfs/datanode</value>
-   </property>
+    <property>
+        <name>dfs.name.dir</name>
+        <value>file:///home/hadoop/data/hadoop-data/nn</value>
+    </property>
+    <property>
+        <name>dfs.data.dir</name>
+        <value>file:///home/hadoop/data/hadoop-data/dn</value>
+    </property>
+    <property>
+        <name>dfs.namenode.checkpoint.dir</name>
+        <value>file:///home/hadoop/data/hadoop-data/snn</value>
+    </property>
 </configuration>
 
 
@@ -101,10 +116,10 @@ vi hdfs-site.xml
 vi mapred-site.xml
 
 <configuration>
- <property>
-  <name>mapreduce.framework.name</name>
-   <value>yarn</value>
- </property>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
 </configuration>
 
 ----------------------------------------------------------------------------------------
@@ -112,13 +127,31 @@ vi mapred-site.xml
 vi yarn-site.xml
 
 <configuration>
- <property>
-  <name>yarn.nodemanager.aux-services</name>
-    <value>mapreduce_shuffle</value>
- </property>
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>hadoop1</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
 </configuration>
 
+
+
 ----------------------------------------------------------------------------------------
+
+vi /home/hadoop/hadoop/etc/hadoop/slaves
+
+hadoop1
+hadoop2
+hadoop3
+
+-----------------------------------------------------------------------------------------
 
 5. Format Namenode
 
