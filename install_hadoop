@@ -157,9 +157,11 @@ hadoop3
 [hadoop@hadoop1 ~]$ scp -rp hadoop hadoop3:/home/hadoop
 -----------------------------------------------------------------------------------------
 
-5. Format Namenode
+5. Format Namenode  - on hadoop1
 
 hdfs namenode -format
+-----------------------------------------------------------------------------------------
+
 
 6. Startup Hagoop
 
@@ -168,5 +170,10 @@ start-dfs.sh
 
 start-yarn.sh 
 
-
+Name Node: http://hadoop1:50070/
+YARN Services: http://hadoop1:8088/
+Secondary Name Node: http://hadoop1:50090/
+Data Node 1: http://hadoop1:50075/
+Data Node 2: http://hadoop2:50075/
+Data Node 3: http://hadoop3:50075/
 
